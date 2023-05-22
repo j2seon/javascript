@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_use class</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>03. class를 이용한 요소 노드 취득</h1>
+    <pre>
+        <b>Document.prototype/Element.prototype.getElementsByClassName 메서드는 인수로 전달한 class 어트리뷰트 값을 갖는 모든 요소들을 탐색하여 반환한다.</b>
+        메서드 이름이 Element가 복수형인것에 알 수 있읏 여러개의 요소 노드 객체를 갖는 DOM컬랙션 객체은 HTMLCollection 객체를 반환한다.
+    </pre>
+
+    <ul id="available">
+        <li class="drink coffee">커피</li>
+        <li class="drink coke">콜라</li>
+        <li class="drink milk">우유</li>
+    </ul>
+
+    <ul id="unavailable">
+        <li class="drink soju">소주</li>
+        <li class="drink beer">맥주</li>
+    </ul>
+
+    <script>
+        const $drinks = document.getElementsByClassName('drink');
+        console.log($drinks);
+        console.log($drinks.length);
+
+        [...$drinks].forEach(drink => drink.style.color='red');
+        Array.from($drinks).forEach(drink => drink.style.color = 'orangered');
+
+        const $coffee = document.getElementsByClassName('drink coffee');
+        consol.log($coffee);
+
+        const $available = document.getElementById('available');
+        const $availableDrinks = $available.getElementById('drink');
+
+        [...$availableDrinks].forEach(drink => drink.style.color='blue');
+    </script>
+</body>
+</html>

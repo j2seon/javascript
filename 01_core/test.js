@@ -199,3 +199,4 @@ function sortFromScore (arr) {
 function makeFullName(arr){
     return arr.map(value => value.lastName + value.firstName);
 }
+

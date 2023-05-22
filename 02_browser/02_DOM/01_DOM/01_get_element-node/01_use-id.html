@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_use_id</title>
+    <style>
+        .area{
+            width: 100px;
+            height: 100px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>01. id를 이용한 요소 노드 취득</h1>
+    <pre>
+        <b>Document.prototype.getElementBuId 메서드는 인수로 전달한 id 어트리뷰트 값을 갖는 하나의 요소 노드를 탐색하여 반환한다.</b>
+        문서 내에 중복된 id값을 갖는 HTML요소가 여러개 존재하더라도 에러는 발생하지 않지만 해당 id값을 갖는 첫번째 요소노드만 반환한다.
+    </pre>
+
+    <div id="area1" class="area">div영역
+        <p id="area2" class="area"></p>
+    </div>
+    <div id="area1" class="area">
+        div영역
+    </div>
+    <script>
+        // 요소 노드 취득 ($는 특별한 내용은 없고 값을 가져온게 태그값이 다름을 표현
+        const $elem = document.getElementById('area1');
+        $elem.style.backgroundColor = 'skyblue';
+
+        //id 값과 동일한 이름의 전역변수가 만들어져서 이를 이용해서 접근도 가능하다.
+        area2.style.backgroundColor='red';
+
+        // id 값을 갖는 HTML요소가 존재하지 않는 경우 null을 반환
+        const $noElem = document.getElementById('area3');
+        console.log($noElem);
+    </script>
+</body>
+</html>
