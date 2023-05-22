@@ -126,6 +126,76 @@ str.split(',');
 function findWord(str, word) {
     str.split(',').for
 }
+
+
+
+
+
+
+/*
+4-2. 배열(arr)의 요소 중 a와 b 사이에 속하지 않는 요소는
+삭제해주는 함수 filterRange(arr, a, b)를 작성한다.
+*/
+function filterRange(arr, a, b) {
+    return arr.filter((value)=> !(value < a || value > b));
+}
+    let arr = [5, 3, 8, 1, 10, 4];
+    arr = filterRange(arr, 1, 5);
+    console.log(arr);
     
+/*
+4-3. 제시 된 숫자값 배열과 문자값 배열을 오름차순 정렬, 내림차순
+정렬하여 출력한다.
+*/
+
+let numbers = [20, 100, 37, 54, 88, 9];
+let strings = ['wow', 'js', 'party', 'hello'];
+// 코드 작성
+
+function increase(arr){
+    return arr.sort((a, b) => a - b);
+}
+
+function decrease(arr){
+    return arr.sort((a, b) => b - a);
+}
+
+function sortFunc(func, arr){
+    return func(arr);
+}
+
+console.log(sortFunc(increase, numbers));
+console.log(sortFunc(decrease, strings));
 
 
+/*
+4-4. Student 생성자 함수를 통해 생성 된 3명의 학생 객체를
+studentList 배열에 담았다. 해당 배열을 전달하여 score 내림차순
+기준으로 정렬해주는 sortFromScore(arr) 함수, 해당 배열을 전달하
+여 lastName과 firstName을 합성하여 name 속성으로 만들어 반
+환하는 makeFullName 함수를 작성한다.
+*/
+
+function Student(firstName, lastName, score){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.score = score;
+}
+const studentList = [
+        new Student('길동', '홍', 60),
+        new Student('보고', '장', 70),
+        new Student('관순', '유', 80)
+    ];
+
+sortFromScore(studentList);
+console.log(studentList);
+console.log(makeFullName(studentList));
+
+
+function sortFromScore (arr) {
+    arr.sort((a, b)=> b.score - a.score);
+}
+
+function makeFullName(arr){
+    return arr.map(value => value.lastName + value.firstName);
+}
