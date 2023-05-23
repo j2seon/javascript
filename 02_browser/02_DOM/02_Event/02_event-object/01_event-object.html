@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>01. 이벤트 객체</h1>
+    <pre>
+        이벤트 발생 시 이벤트에 관련한 다양한 정보를 가진 이벤트 객체가 동적으로 생성된다.
+        생성된 이벤트 객체는 이벤트 핸들러의 첫번째 인수로 전달된다.
+    </pre>
+
+    <h1 class="message">아무곳이나 클릭해보세요. 클릭한 좌표를 친히 알려줘볼게요</h1>
+    <script>
+        const $message = document.querySelector('.message');
+
+        function showCoords(e){
+            console.log(e);
+            $message.textContent = `client x: ${e.clientX}, client Y: ${e.clientY}`;
+        }
+        document.onclick = showCoords;
+    </script>
+
+    
+
+</body>
+</html>

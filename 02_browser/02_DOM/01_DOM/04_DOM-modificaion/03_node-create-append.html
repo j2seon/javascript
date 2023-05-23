@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03. 노드생성과 추가</h1>
+
+    <pre>
+        Document.prototype.createElement(tagName) : 인수로 전달받은 테그 이름에 해당하는 요소 노드를 생성하여 반환
+        Document.prototype.createTextNode(text):인수로 전달받은 텍스트 값으로 텍스트 노드를 생성하여 반환
+        Node.protytype.appendChild(childNode) : 인수로 전달받은 노드를 appendChild메서드를 호출한 노드의 마지막 자식 노드로 추가
+    </pre>
+
+    <ul id="drink">
+        <li>커피</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById('drink');
+
+        const $li = document.createElement('li');
+
+        const textNode = document.createTextNode('콜라');
+
+        $li.appendChild(textNode);
+
+        //자식노드가 하나도 없는 경우에는 텍스트 노드를 생성하여 요소 노드의 자식 노드로 텍스트 노드를 추가하는 것보다
+        //textContent 사용이 더 간편하다.
+        $li.textContent = '사이다';
+
+        console.log($li);
+
+        $drink.appendChild($li);
+    </script>
+
+    <h3> 복수 노드 생성과 추가</h3>
+    <ul id="food">
+        <li>김치찌개</li>
+    </ul>
+    
+    <script>
+
+        
+
+        const $food = document.getElementById('food');
+        // const $container = document.createElement('div');
+        
+        //DocumentFragment 노드는 자식 노드들의 부모노드로서 별도의 서브 DOM을 구성하아ㅕ 기존 DOM을 추가하기 위한 용도로 사용
+
+        const $fragment = document.createDocumentFragment();
+        
+        ['된장찌개', '고등어 구이', '순대국'].forEach(text => {
+            
+            const $li = document.createElement('li');
+            // $li.textContent = text;
+            //  1) DOM이 3번 변경되면서 리플로우, 리페인트가 3번 실행되어서 비효율적
+            // $food.appendChild($li);
+
+            $li.textContent = text;
+            // 2) 생성된 div 요소에 li를 추가 
+            // $container.appendChild($li);
+
+            //3)DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자식 노드만 추가
+            $fragment.append($li);
+
+        });
+
+        // $food.appendChild($container);
+        $food.appendChild($fragment);
+
+    </script>
+
+</body>
+</html>
