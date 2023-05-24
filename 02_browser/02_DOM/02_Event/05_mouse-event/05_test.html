@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: gray;
+            border: 1px soild black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        const box = document.querySelector('.box');
+
+
+        const inital = {x: 0 , y: 0};
+        const offset = {x: 0 , y: 0};
+
+        const move = e => {
+            offset.x = e.clientX - inital.x;
+            offset.y = e.clientX - inital.y;
+
+            box.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0)`;
+        };
+
+        box.addEventListener('mousedown', e => {
+            inital.x = e.clientX - offset.x;
+            inital.y = e.clientY - offset.y;
+            document.addEventListener('mousemove', move);
+        });
+
+        box.addEventListener('mouseup', () => {
+            document.removeEventListener('mousemove', move);
+        });
+        
+
+    </script>
+</body>
+</html>

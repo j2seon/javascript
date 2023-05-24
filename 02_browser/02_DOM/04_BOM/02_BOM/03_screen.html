@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+
+    </h1>
+
+    <pre>
+        screen객체는 웹 브라우져 화면이 아닌 운영체제 화면의 속성을 가지는 객체
+        screen.width, screen.height는 화면 너비와 높이를 나타내지만
+        screen availWidth, screen.avilHeight는 실제 화면에서 사용가능한 너비와 높이를 의미한다.
+        screen.colorDepth  사용가능한 색상수
+        screen.pixelDepth는 한 필셀장 비트수 
+    </pre>
+
+    <script>
+        for(scr in screen){
+            console.log(`${scr} : ${screen[scr]}`);
+        }
+    </script>
+</body>
+</html>
