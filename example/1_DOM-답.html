@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1_DOM-문제</title>
+    <title>1_DOM-답</title>
     <style>
         .area {
             border: 1px solid black;
@@ -32,9 +32,9 @@
 
     <script>
         function colorChange() {
-            const $input = document.querySelector('#selectColor');
-            const $div1 = document.querySelector('#div1');
-            $div1.style.backgroundColor = $input.value;
+            const $div1 = document.getElementById("div1");
+            const $selectColor = document.getElementById("selectColor");
+            $div1.style.backgroundColor = $selectColor.value;
         }
     </script>
 
@@ -46,16 +46,19 @@
     <button onclick="doubleSize();">200x200</button>
 
     <script>
-        const $div2 = document.getElementById('div2');
+        
         function halfSize() {
+            const $div2 = document.querySelector("#div2");
             $div2.style.width = '50px';
             $div2.style.height = '50px';
         }
         function defaultSize() {
+            const $div2 = document.querySelector("#div2");
             $div2.style.width = '100px';
             $div2.style.height = '100px';
         }
         function doubleSize() {
+            const $div2 = document.querySelector("#div2");
             $div2.style.width = '200px';
             $div2.style.height = '200px';
         }
@@ -78,20 +81,18 @@
 
 
     <script>
-
         function calculator(value) {
-            const $num1 = Number(document.getElementById('num1').value);
-            const $num2 = Number(document.getElementById('num2').value);
-            const $calc = document.getElementById('calc');
+            let su1 = Number(document.getElementById("num1").value);
+            let su2 = Number(document.getElementById("num2").value);
             let result = 0;
-            switch(value){
-                case '+' : result = $num1 + $num2; break;
-                case '-' : result =$num1 - $num2;break;
-                case 'x' : result =$num1 * $num2;break;
-                case '/' : result = $num1 / $num2;break;
-                case '%' : result = $num1 % $num2;break;
+            switch (value) {
+                case "+": result = su1 + su2; break;
+                case "-": result = su1 - su2; break;
+                case "x": result = su1 * su2; break;
+                case "/": result = su1 / su2; break;
+                case "%": result = su1 % su2; break;
             }
-            $calc.textContent = result;
+            document.getElementById("calc").textContent = result;
         }
     </script>
 
@@ -111,7 +112,11 @@
     </ul>
     <script>
         function deleteList() {
-            // 코드 작성
+            const $list = document.querySelector('#list');
+            while ($list.firstChild) {
+                $list.removeChild($list.firstChild);
+            }
+            // $list.innerHTML = '';
         }
     </script>
 
@@ -127,7 +132,12 @@
         function createList(){
             let content = prompt('추가할 목록을 입력하세요');
 
-            // 코드 작성
+            if(!content) return;
+
+            const $list = document.querySelector("#list");
+            const $li = document.createElement("li");
+            $li.textContent = content;
+            $list.appendChild($li);
         }
     </script>
 
@@ -145,7 +155,8 @@
     </div>
     <script>
         function left(){
-            // 코드 작성
+            const $area = document.getElementById("area");
+            $area.appendChild($area.firstElementChild);
         }
     </script>
 
