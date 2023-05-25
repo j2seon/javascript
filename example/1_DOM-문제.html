@@ -86,10 +86,10 @@
             let result = 0;
             switch(value){
                 case '+' : result = $num1 + $num2; break;
-                case '-' : result =$num1 - $num2;break;
-                case 'x' : result =$num1 * $num2;break;
-                case '/' : result = $num1 / $num2;break;
-                case '%' : result = $num1 % $num2;break;
+                case '-' : result = $num1 - $num2; break;
+                case 'x' : result = $num1 * $num2; break;
+                case '/' : result = $num1 / $num2; break;
+                case '%' : result = $num1 % $num2; break;
             }
             $calc.textContent = result;
         }
@@ -110,8 +110,12 @@
         <li>도서</li>
     </ul>
     <script>
+        const $list = document.getElementById('list');
+
         function deleteList() {
-            // 코드 작성
+            while($list.firstElementChild){
+                $list.removeChild($list.firstElementChild);
+            }
         }
     </script>
 
@@ -126,8 +130,10 @@
     <script>
         function createList(){
             let content = prompt('추가할 목록을 입력하세요');
-
-            // 코드 작성
+            const newList = document.createElement('li');
+            const newText = document.createTextNode(content);
+            newList.appendChild(newText);
+            $list.appendChild(newList);
         }
     </script>
 
@@ -145,7 +151,10 @@
     </div>
     <script>
         function left(){
-            // 코드 작성
+            const $area = document.getElementById('area');
+            const left = $area.firstElementChild;
+            // $area.insertBefore(left,null);
+            $area.appendChild(left);
         }
     </script>
 
