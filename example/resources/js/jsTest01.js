@@ -1,0 +1,1 @@
+const $q01 = document.getElementById('q01');
